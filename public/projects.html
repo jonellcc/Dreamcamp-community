@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Dream Camp Community Uploads</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">DREAM CAMP COMMUNITY</a>
+                <div class="nav-links">
+                    <a href="asset.html">ASSET</a>
+                    <a href="projects.html">PROJECTS</a>
+                    <a href="#">SIGN IN</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Project Materials Uploads</h1>
+            <p>Here upload your Materials for Editing you need please click file upload to upload your assets materials volunteer</p>
+            <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </main>
+    <script>
+        document.getElementById('uploadForm').onsubmit = function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(`Your file was successfully uploaded to asset.html. Just go to ${window.location.origin}/asset.html to see your upload.`);
+                window.location.href = '/projects.html'; 
+            })
+            .catch(error => console.error('Error uploading file:', error));
+        };
+    </script>
+</body>
+</html>

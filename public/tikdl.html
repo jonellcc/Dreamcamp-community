@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikDL - Download TikTok Videos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .loading {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .thumbnail {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">DREAM CAMP COMMUNITY</a>
+                <div class="nav-links">
+                    <a href="asset.html">ASSET</a>
+                    <a href="projects.html">PROJECTS</a>
+                    <a href="remini.html">REMINI</a>
+                    <a href="#">SIGN IN</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>TikDL</h1>
+            <p>Paste a TikTok video URL to download</p>
+            <form id="tikdlForm">
+                <input type="text" id="videoUrl" name="videoUrl" placeholder="Enter TikTok Video URL" required>
+                <button type="submit">Download Video</button>
+            </form>
+            <div id="loading" class="loading" style="display:none;">Processing...</div>
+            <div id="result" style="display:none;">
+                <h2>Downloaded Video</h2>
+                <video id="resultVideo" controls class="thumbnail">
+                    Your browser does not support the video tag.
+                </video>
+                <a id="downloadLink" href="#" download>Download Video</a>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="tikdl.js"></script>
+</body>
+</html>

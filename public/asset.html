@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets - Dream Camp Community</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">DREAM CAMP COMMUNITY ASSET RESOURCES</a>
+                
+                <div class="nav-links">
+                    <a href="asset.html">ASSET</a>
+                    <a href="projects.html">PROJECTS</a>
+                    <a href="#">SIGN IN</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Assets</h1>
+            <p>Here the asset resources need for editors and downloads files :></p>
+            <div id="file-list"></div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/assets')
+                .then(response => response.json())
+                .then(files => {
+                    const fileList = document.getElementById('file-list');
+                    files.forEach(file => {
+                        const fileElement = document.createElement('div');
+                        const filePath = `/uploads/${file}`;
+
+                        if (file.match(/\.(jpg|jpeg|png|gif)$/)) {
+                            fileElement.innerHTML = `<img src="${filePath}" alt="${file}" class="thumbnail"><br><a href="${filePath}" download>Download</a>`;
+                        } else if (file.match(/\.(mp4|webm)$/)) {
+                            fileElement.innerHTML = `<video controls><source src="${filePath}" type="video/mp4">Your browser does not support the video tag.</video><br><a href="${filePath}" download>Download</a>`;
+                        } else if (file.match(/\.(mp3|wav)$/)) {
+                            fileElement.innerHTML = `<audio controls><source src="${filePath}" type="audio/mpeg">Your browser does not support the audio tag.</audio><br><a href="${filePath}" download>Download</a>`;
+                        } else {
+                            fileElement.innerHTML = `<a href="${filePath}" download>${file}</a>`;
+                        }
+
+                        fileList.appendChild(fileElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching files:', error));
+        });
+    </script>
+</body>
+</html>

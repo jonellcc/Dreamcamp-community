@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remini - Dream Camp Community</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">DREAM CAMP COMMUNITY</a>
+                <div class="nav-links">
+                    <a href="asset.html">ASSET</a>
+                    <a href="projects.html">PROJECTS</a>
+                    <a href="remini.html">REMINI</a>
+                    <a href="#">SIGN IN</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Remini</h1>
+            <p>Upload an image to process with Remini</p>
+            <form id="reminiForm">
+                <input type="file" id="fileInput" name="file" required>
+                <button type="submit">Upload and Process</button>
+            </form>
+            <div id="loading" class="loading" style="display:none;">Processing...</div>
+            <div id="result" style="display:none;">
+                <h2>Processed Image</h2>
+                <img id="resultImage" src="" alt="Processed Image" class="thumbnail">
+                <a id="downloadLink" href="#" download>Download Image</a>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="remini.js"></script>
+</body>
+</html>
